@@ -13,6 +13,7 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class SelectPickerFragment extends DialogFragment {
 	public static final String EXTRA_SELECT =
@@ -40,12 +41,18 @@ public class SelectPickerFragment extends DialogFragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		//setRetainInstance(true);
+		setRetainInstance(true);
+		//Toast.makeText(getActivity(), "onCreate", Toast.LENGTH_SHORT).show();
 	}
 	
 	@Override
 	public Dialog onCreateDialog(Bundle savedInstanceState) {
-		mDate = (Date)getArguments().getSerializable(EXTRA_SELECT);
+		//Toast.makeText(getActivity(), "onCreateDialog", Toast.LENGTH_SHORT).show();
+		if (mDate == null) {
+			// don't override mDate when mDate has data...
+			mDate = (Date)getArguments().getSerializable(EXTRA_SELECT);
+			//Toast.makeText(getActivity(), "first onCreateDialog", Toast.LENGTH_SHORT).show();
+		}
 		
 		View v = getActivity().getLayoutInflater()
 				.inflate(R.layout.fragment_select_picker, null);

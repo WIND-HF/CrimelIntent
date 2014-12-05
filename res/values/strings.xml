@@ -11,4 +11,10 @@
     <string name="date_button">Date</string>
     <string name="time_button">Time</string>
     <string name="select_picker_title">Select:</string>
+    <string name="new_crime">New Crime</string>
+    <string name="show_subtitle">Show Subtitle</string>
+    <string name="hide_subtitle">Hide Subtitle</string>
+    <string name="delete_crime">Delete</string>
+    <string name="empty_crimelist">No Crime</string>
+    <string name="add_crime_button">Add Crime</string>
 </resources>
