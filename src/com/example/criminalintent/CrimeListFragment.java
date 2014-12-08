@@ -84,6 +84,7 @@ public class CrimeListFragment extends ListFragment {
 							crimeLab.deleteCrime(adapter.getItem(i));
 						}
 					}
+					crimeLab.saveCrimes();
 					mode.finish();
 					adapter.notifyDataSetChanged();
 					return true;
@@ -146,29 +147,6 @@ public class CrimeListFragment extends ListFragment {
 			return super.onOptionsItemSelected(item);
 		}
  	}
-	
-	@Override
-	public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
-		getActivity().getMenuInflater().inflate(R.menu.crime_list_item_context, menu);
-	}
-	
-	@Override
-	public boolean onContextItemSelected(MenuItem item) {
-		AdapterContextMenuInfo info = (AdapterContextMenuInfo)item.getMenuInfo();
-		int position = info.position;
-		CrimeAdapter adapter = (CrimeAdapter)getListAdapter();
-		Crime crime = adapter.getItem(position);
-		
-		switch (item.getItemId()) {
-		case R.id.menu_item_delete_crime:
-			CrimeLab cl = CrimeLab.get(getActivity());
-			cl.deleteCrime(crime);
-			cl.saveCrimes();
-			adapter.notifyDataSetChanged();
-			return true;
-		}
-		return super.onContextItemSelected(item);
-	}
 	
 	private class CrimeAdapter extends ArrayAdapter<Crime> {
 		 
